@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/crimeListFragment">
+
+    <fragment
+        android:id="@+id/crimeListFragment"
+        android:name="com.hfad.criminalintent.CrimeListFragment"
+        android:label="CrimeListFragment"
+        tools:layout="@layout/fragment_crime_list">
+        <action
+            android:id="@+id/show_crime_detail"
+            app:destination="@id/crimeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/crimeDetailFragment"
+        android:name="com.hfad.criminalintent.CrimeDetailFragment"
+        android:label="fragment_crime_detail"
+        tools:layout="@layout/fragment_crime_detail" >
+        <argument
+            android:name="crimeId"
+            app:argType="java.util.UUID" />
+        <action
+            android:id="@+id/select_date"
+            app:destination="@id/dataPickerFragment" />
+        <action
+            android:id="@+id/return_to_crime_list"
+            app:destination="@id/crimeListFragment" />
+        <action
+            android:id="@+id/zoom_on_crime"
+            app:destination="@id/crimeZoomInFragment" />
+
+    </fragment>
+    <dialog
+        android:id="@+id/dataPickerFragment"
+        android:name="com.hfad.criminalintent.DataPickerFragment"
+        android:label="DataPickerFragment" >
+        <argument
+            android:name="crimeDate"
+            app:argType="java.util.Date" />
+    </dialog>
+    <fragment
+        android:id="@+id/crimeZoomInFragment"
+        android:name="com.hfad.criminalintent.CrimeZoomInFragment"
+        android:label="fragment_crime_zoom_in"
+        tools:layout="@layout/fragment_crime_zoom_in" >
+        <argument
+            android:name="photoPath"
+            app:argType="string" />
+    </fragment>
+
+
+</navigation>
